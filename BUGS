@@ -1,0 +1,6 @@
+                                      BUGS
+
+* ./configure does not autodetect programs such as CC, YACC etc. [FIXED]
+* optimizer is not capable or re-reading its own output. [FIXED]
+* optimizer memory management is to be improved [NAAA]
+

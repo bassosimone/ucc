@@ -1,0 +1,5 @@
+
+$(BuildDir)/@DIR@_@NAME@.o: $(TopDir)/src/@DIR@/@NAME@.c
+	@$(ECHO) "  [COMPILE] @DIR@/@NAME@.c"
+	@$(COMPILE) $(TopDir)/src/@DIR@/@NAME@.c -o $(BuildDir)/@DIR@_@NAME@.o
+

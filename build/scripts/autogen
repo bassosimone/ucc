@@ -1,0 +1,15 @@
+#!/bin/bash
+
+for MOD in common compiler optimizer; do
+  rm build/makefiles/$MOD.mk
+done
+
+for MOD in compiler optimizer; do
+  sh build/scripts/lfile $MOD >> build/makefiles/$MOD.mk
+  sh build/scripts/yfile $MOD >> build/makefiles/$MOD.mk
+done
+
+for MOD in common compiler optimizer; do
+  sh build/scripts/archive $MOD >> build/makefiles/$MOD.mk
+done
+

@@ -1,0 +1,28 @@
+                            Optimizer Grammar Intro
+
+full: got code
+
+  We stop eating scanner cookies when we found these two rules :-).
+
+got: SECT_GOT body_SECT_GOT
+
+  We have the global offset table when we've read SECT_GOT (which is the
+  string ".got") and we've also read section's body.
+
+body_SECT_GOT: ID OFFSET | body_SECT_GOT ID OFFSET
+
+  We have the got section's body when we've read an indefinite number of
+  ID OFFSET (Thanks to the left recursive rule).
+
+code: SECT_CODE body_SECT_CODE
+body_SECT_CODE: line_SECT_CODE | body_SECT_CODE line_SECT_CODE
+
+  The code is defined in the same way as got (and body_SECT_CODE like
+  body_SECT_GOT).
+
+line_SECT_CODE: ...
+
+  The various sequence for the possible instructions. The only thing that
+  needs to be stressed is the fact that we always read VM_JTRUE-VM_JFALSE
+  pair, for the reason explained in optimizer/optimizer.h.
+

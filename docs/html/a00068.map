@@ -1,0 +1,27 @@
+<area shape="rect" href="$a00012.html" title="Assembly instruction." alt="" coords="40,7,117,33">
+<area shape="rect" title="base" alt="" coords="53,31,61,39">
+<area shape="rect" title="base" alt="" coords="39,437,47,445">
+<area shape="rect" href="$a00006.html" title="Parsing tree node." alt="" coords="60,233,127,260">
+<area shape="rect" title="code" alt="" coords="76,31,84,39">
+<area shape="rect" title="code" alt="" coords="88,229,96,237">
+<area shape="rect" href="$a00001.html" title="Entry in backpatch list." alt="" coords="133,103,211,129">
+<area shape="rect" title="instr" alt="" coords="89,31,97,39">
+<area shape="rect" title="instr" alt="" coords="155,99,163,107">
+<area shape="rect" href="$a00007.html" title="Memory allocator and garbage collector." alt="" coords="139,345,224,372">
+<area shape="rect" title="storage" alt="" coords="157,369,165,377">
+<area shape="rect" title="storage" alt="" coords="68,437,76,445">
+<area shape="rect" title="free_nodes" alt="" coords="96,257,104,265">
+<area shape="rect" title="free_nodes" alt="" coords="160,341,168,349">
+<area shape="rect" title="next" alt="" coords="103,229,111,237">
+<area shape="rect" title="next" alt="" coords="104,257,112,265">
+<area shape="rect" title="free_entries" alt="" coords="183,127,191,135">
+<area shape="rect" title="free_entries" alt="" coords="191,341,199,349">
+<area shape="rect" title="truelist\nnextlist\nfalselist" alt="" coords="159,127,167,135">
+<area shape="rect" title="truelist\nnextlist\nfalselist" alt="" coords="97,229,105,237">
+<area shape="rect" title="next" alt="" coords="187,99,195,107">
+<area shape="rect" title="next" alt="" coords="189,127,197,135">
+<area shape="rect" href="$a00008.html" title="Header for allocated block of memory." alt="" coords="329,233,465,260">
+<area shape="rect" title="headers\nfree_headers" alt="" coords="364,257,372,265">
+<area shape="rect" title="headers\nfree_headers" alt="" coords="203,341,211,349">
+<area shape="rect" title="next" alt="" coords="415,229,423,237">
+<area shape="rect" title="next" alt="" coords="417,257,425,265">

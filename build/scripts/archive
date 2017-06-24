@@ -1,0 +1,27 @@
+#!/bin/bash
+
+if [ $# -ne 1 ]; then
+  echo "usage: $0 dir"
+  exit 1
+fi
+
+OBJECTS=""
+DIR=$1
+
+#
+# C files
+#
+
+for NAME in $(cd src/$DIR && ls *.c); do
+  NAME=$(echo $NAME | sed 's!\.c$!!g')
+  cat build/templates/cfile | sed -e "s!@NAME@!$NAME!g" -e "s!@DIR@!$DIR!g"
+  OBJECTS="$OBJECTS \$(BuildDir)/${DIR}_${NAME}.o"
+done
+
+#
+# Linking rules
+#
+
+cat build/templates/archive                                             \
+  | sed -e "s!@DIR@!$DIR!g" -e "s!@OBJECTS@!$OBJECTS!g"
+

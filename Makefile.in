@@ -1,0 +1,49 @@
+#
+# Common variables.
+#
+
+BuildDir=@BuildDir@
+TopDir=@TopDir@
+COMPILE=@CC@ @CFLAGS@ -I$(TopDir)/src -c
+LINK=@CC@ @LDFLAGS@
+YACC=@YACC@ @YFLAGS@
+LEX=@LEX@
+ECHO=@ECHO@
+CLEAN=rm -rf --
+INSTALL=@INSTALL@
+PREFIX=@PREFIX@
+AR=@AR@ @ARFLAGS@
+
+.PHONY: all clean install
+
+all: $(BuildDir)/compiler                                               \
+     $(BuildDir)/optimizer
+
+$(BuildDir)/compiler: $(BuildDir)/compiler.a
+	@$(ECHO) "  [LINK] compiler"
+	@$(LINK) $(BuildDir)/compiler.a -o $(BuildDir)/compiler
+
+$(BuildDir)/optimizer: $(BuildDir)/optimizer.a
+	@$(ECHO) "  [LINK] optimizer"
+	@$(LINK) $(BuildDir)/optimizer.a -o $(BuildDir)/optimizer
+
+clean:
+	@$(ECHO) "  [CLEAN]"
+	@$(CLEAN) $(BuildDir)/*.o                                       \
+                  $(BuildDir)/*.a                                       \
+                  $(BuildDir)/compiler                                  \
+                  $(BuildDir)/optimizer
+
+install: $(BuildDir)/compiler $(BuildDir)/optimizer
+	@$(ECHO) "  [INSTALL]"
+	@$(INSTALL) $(BuildDir)/compiler $(PREFIX)/bin
+	@$(INSTALL) $(BuildDir)/optimizer $(PREFIX)/bin
+
+#
+# Build targets
+#
+
+include $(TopDir)/build/makefiles/common.mk
+include $(TopDir)/build/makefiles/compiler.mk
+include $(TopDir)/build/makefiles/optimizer.mk
+

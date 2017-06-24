@@ -1,0 +1,198 @@
+#!/bin/sh
+
+#
+# Default variables
+#
+
+CFLAGS="-Wall -g"
+LDFLAGS=""
+YFLAGS="-d"
+PREFIX="/usr/local"
+ARFLAGS="r"
+
+#
+# Autodetect ar
+#
+
+echo -n "Checking for ar: "
+
+ar_check()
+{
+  for AR in /bin/ar /usr/bin/ar /usr/local/bin/ar; do
+    [ -x $AR ] && return 0
+  done
+  return 1
+}
+
+if ! ar_check; then
+  echo "Not found"
+  exit 1
+fi
+
+echo "$AR"
+
+#
+# Autodetect install
+#
+
+echo -n "Checking for install: "
+
+install_check()
+{
+  for INSTALL in /bin/install /usr/bin/install /usr/local/bin/install; do
+    [ -x $INSTALL ] && return 0
+  done
+  return 1
+}
+
+if ! install_check; then
+  echo "Not found"
+  exit 1
+fi
+
+echo "$INSTALL"
+
+#
+# Autodetect ECHO
+#
+
+echo -n "Checking for echo: "
+
+echo_check()
+{
+  for ECHO in '/bin/echo' '/usr/bin/echo' '/usr/local/bin/echo'; do
+    [ -x $ECHO ] && return 0
+  done
+  return 1
+}
+
+if ! echo_check; then
+  echo "Not found"
+  exit 1
+fi
+
+echo "$ECHO"
+
+#
+# TopDir and BuildDir
+#
+
+TopDir=$(cd $(dirname $0) && pwd)
+BuildDir=$(pwd)
+
+if [ "$TopDir" = "$BuildDir" ]; then
+  TopDir="."
+  BuildDir="."
+fi
+
+#
+# Autodetect GCC
+#
+
+echo -n "Checking for GCC: "
+
+gcc_check()
+{
+  for CC in /bin/gcc /usr/bin/gcc /usr/local/bin/gcc; do
+    [ -x $CC ] && return 0
+  done
+  return 1
+}
+
+if ! gcc_check; then
+  echo "Not found"
+  exit 1
+fi
+
+echo "$CC"
+
+#
+# Check wheter GCC works
+#
+
+echo -n "Checking whether GCC works: "
+
+gcc_check_works()
+{
+  cat > $BuildDir/test-gcc.c << EOF
+#include<stdlib.h>
+#include<stdio.h>
+int main(int argc, const char *const *argv)
+{
+  printf("Hello, world!\n");
+  exit(EXIT_SUCCESS);
+}
+EOF
+
+  $CC -o $BuildDir/test-gcc $BuildDir/test-gcc.c                        \
+         1>/dev/null 2>>$BuildDir/config.log
+}
+
+if ! gcc_check_works; then
+  echo "No (See $BuildDir/config.log for more info)"
+  exit 1
+fi
+
+rm $BuildDir/test-gcc $BuildDir/test-gcc.c $BuildDir/config.log
+
+echo "Yes"
+
+#
+# Autodetect bison
+#
+
+echo -n "Checking for bison: "
+
+bison_check()
+{
+  for YACC in /bin/bison /usr/bin/bison /usr/local/bin/bison; do
+    [ -x $YACC ] && return 0
+  done
+  return 1
+}
+
+if ! bison_check; then
+  echo "Not found"
+  exit 1
+fi
+
+echo "$YACC"
+
+#
+# Autodetect flex
+#
+
+echo -n "Checking for flex: "
+
+flex_check()
+{
+  for LEX in /bin/flex /usr/bin/flex /usr/local/bin/flex; do
+    [ -x $LEX ] && return 0
+  done
+  return 1
+}
+
+if ! flex_check; then
+  echo "Not found"
+  exit 1
+fi
+
+echo "$LEX"
+
+#
+# Create Makefile
+#
+
+echo -n "Creating $BuildDir/Makefile: "
+
+cat $TopDir/Makefile.in                                                \
+  | sed -e "s!@TopDir@!$TopDir!g" -e "s!@BuildDir@!$BuildDir!g"        \
+        -e "s!@CC@!$CC!g" -e "s!@CFLAGS@!$CFLAGS!"                     \
+        -e "s!@LDFLAGS@!$LDFLAGS!g"                                    \
+        -e "s!@YACC@!$YACC!g" -e "s!@YFLAGS@!$YFLAGS!g"                \
+        -e "s!@LEX@!$LEX!g" -e "s!@ECHO@!$ECHO!g"                      \
+        -e "s!@PREFIX@!$PREFIX!g" -e "s!@INSTALL@!$INSTALL!g"          \
+        -e "s!@AR@!$AR!g" -e "s!@ARFLAGS@!$ARFLAGS!g"                  \
+  > $BuildDir/Makefile
+
+echo "Done"

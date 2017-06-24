@@ -1,0 +1,10 @@
+                            How-To install with UNIX
+
+To install ucc_compiler and ucc_optimizer under /usr/local, do:
+
+  ./configure
+  make
+  make install
+
+The last step may need root privileges.
+

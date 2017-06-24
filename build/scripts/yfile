@@ -1,0 +1,18 @@
+#!/bin/bash
+
+if [ $# -ne 1 ]; then
+  echo "usage: $0 dir"
+  exit 1
+fi
+
+DIR=$1
+
+#
+# Bison files
+#
+
+for NAME in $(cd src/$DIR && ls *.y); do
+  NAME=$(echo $NAME | sed 's!\.y$!!g')
+  cat build/templates/yfile | sed -e "s!@NAME@!$NAME!g" -e "s!@DIR@!$DIR!g"
+done
+

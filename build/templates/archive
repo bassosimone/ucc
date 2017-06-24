@@ -1,0 +1,5 @@
+
+$(BuildDir)/@DIR@.a: @OBJECTS@
+	@$(ECHO) "  [ARCHIVE] @DIR@.a"
+	@$(AR) $(BuildDir)/@DIR@.a @OBJECTS@
+

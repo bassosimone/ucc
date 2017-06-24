@@ -1,0 +1,30 @@
+.got
+again 16
+main 0
+.code
+0 VM_EQ $4 "127.0.0.1"
+1 VM_JFALSE 6 
+2 VM_EQ $1 "22"
+3 VM_JTRUE 11 
+4 VM_EQ $1 "443"
+5 VM_JTRUE 11 
+6 VM_EXEC "ls"
+7 VM_EQ $1 "80"
+8 VM_JFALSE 15 
+9 VM_EXEC "ifconfig"
+10 VM_JMP 15 
+11 VM_EQ $4 "127.0.0.1"
+12 VM_JFALSE 15 
+13 VM_EXEC "/sbin/panic"
+14 VM_JMP 15 
+15 VM_RETURN 
+16 VM_EQ $4 "127.0.0.1"
+17 VM_JFALSE 25 
+18 VM_EQ $1 "443"
+19 VM_JFALSE 25 
+20 VM_EQ $3 "localhost"
+21 VM_JFALSE 24 
+22 VM_EXEC "/sbin/foo"
+23 VM_JMP 25 
+24 VM_EXEC "/bin/sh"
+25 VM_RETURN 

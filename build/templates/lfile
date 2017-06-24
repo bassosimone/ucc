@@ -1,0 +1,5 @@
+
+$(TopDir)/src/@DIR@/@NAME@.c: $(TopDir)/src/@DIR@/@NAME@.l
+	@$(ECHO) "  [LEX] @DIR@/@NAME@.l"
+	@$(LEX) -o $(TopDir)/src/@DIR@/@NAME@.c $(TopDir)/src/@DIR@/@NAME@.l
+

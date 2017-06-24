@@ -1,0 +1,22 @@
+<area shape="rect" href="$a00006.html" title="Parsing tree node." alt="" coords="5,233,72,260">
+<area shape="rect" title="free_nodes" alt="" coords="40,257,48,265">
+<area shape="rect" title="free_nodes" alt="" coords="127,343,135,351">
+<area shape="rect" title="next" alt="" coords="48,229,56,237">
+<area shape="rect" title="next" alt="" coords="49,257,57,265">
+<area shape="rect" href="$a00012.html" title="Assembly instruction." alt="" coords="33,7,111,33">
+<area shape="rect" title="code" alt="" coords="64,31,72,39">
+<area shape="rect" title="code" alt="" coords="35,229,43,237">
+<area shape="rect" href="$a00001.html" title="Entry in backpatch list." alt="" coords="93,103,171,129">
+<area shape="rect" title="instr" alt="" coords="77,31,85,39">
+<area shape="rect" title="instr" alt="" coords="120,99,128,107">
+<area shape="rect" title="free_entries" alt="" coords="139,127,147,135">
+<area shape="rect" title="free_entries" alt="" coords="169,341,177,349">
+<area shape="rect" title="truelist\nnextlist\nfalselist" alt="" coords="117,127,125,135">
+<area shape="rect" title="truelist\nnextlist\nfalselist" alt="" coords="44,229,52,237">
+<area shape="rect" title="next" alt="" coords="147,99,155,107">
+<area shape="rect" title="next" alt="" coords="149,127,157,135">
+<area shape="rect" href="$a00008.html" title="Header for allocated block of memory." alt="" coords="275,233,411,260">
+<area shape="rect" title="headers\nfree_headers" alt="" coords="316,257,324,265">
+<area shape="rect" title="headers\nfree_headers" alt="" coords="189,341,197,349">
+<area shape="rect" title="next" alt="" coords="360,229,368,237">
+<area shape="rect" title="next" alt="" coords="363,257,371,265">

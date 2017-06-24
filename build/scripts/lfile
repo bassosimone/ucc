@@ -1,0 +1,18 @@
+#!/bin/bash
+
+if [ $# -ne 1 ]; then
+  echo "usage: $0 dir"
+  exit 1
+fi
+
+DIR=$1
+
+#
+# Flex files
+#
+
+for NAME in $(cd src/$DIR && ls *.l); do
+  NAME=$(echo $NAME | sed 's!\.l$!!g')
+  cat build/templates/lfile | sed -e "s!@NAME@!$NAME!g" -e "s!@DIR@!$DIR!g"
+done
+

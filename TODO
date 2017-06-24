@@ -1,0 +1,7 @@
+- Make sure that compiler works [done]
+- Make sure that optimizer works [done]
+- Write documentation for compiler [done]
+- Write documentation for optimizer [done]
+- Write report [done]
+- Write howto install [DONE]
+- Add docs/doxygen.conf [DONE]

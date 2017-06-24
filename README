@@ -1,0 +1,103 @@
+                            UCC (Useless C Compiler)
+
+[Intro]
+
+This is a compiler for a subset of the C language that translates it
+into an assembler that we've invented. The actual process is made of
+two passes:
+
+* pass1   : translate C-subset into the assembler;
+* pass2   : optimize assembler for code and speed.
+
+The program `compiler' implements pass1, and `optimizer' implements
+pass2. They have the same Unix-filter behavior, e.g. they read a sour-
+ce file from standard input, and write the result on standard output.
+
+
+[Languages]
+
+The input language for pass1 is similar to C, with the following few
+significant exceptions:
+
+* Functions have just one parameter;
+* The only flow control instruction is IF-THEN-ELSE;
+* main() function does not mean program entry point;
+* The only available function is exec(), that executes a command line;
+* C++ comments are available;
+* Comparison operators are applied to C strings rather than to integers;
+* Function parameter has the following type:
+
+    struct ucc_input_t {
+        const char *monitor_type;
+        const char *port;
+        const char *group;
+        const char *label;
+        const char *hostname;
+        const char *family;
+    };
+
+This language was originally intended to be used from a network daemon to
+filter incoming packets. Such packets will contain the data presented in
+ucc_input_t, therefore, the language sense was: filtering each packet,
+represented as the parameter, through all the functions. This network
+daemon will never be implemented, hence the compiler name.
+
+The assembler language is divided into two sections: .got and .code. The
+former is the global offset table and maps the name of each function with
+its entry point in the code. The latter contains the code itself. Below
+testing/ there are examples of both the input and the assembler language.
+
+
+[VM instructions]
+
+The (nonexistent) virtual machine that should interpret the assembler has
+the following instructions:
+
+* VM_NOP     Does nothing;
+* VM_EXEC    Execute an external program;
+* VM_EQ      Compare two strings, may set TrueFlag;
+* VM_MAG     Compare two strings, may set TrueFlag;
+* VM_MIN     Compare two strings, may set TrueFlag;
+* VM_MIEQ    Compare two strings, may set TrueFlag;
+* VM_NEQ     Compare two strings, may set TrueFlag;
+* VM_JTRUE   Jump to location if TrueFlag is set;
+* VM_JFALSE  Jump to location if TrueFlag is not set;
+* VM_JMP     Unconditionally branch to location;
+* VM_RETURN  End of a function.
+
+The following mapping exists between VM registers and fields in
+ucc_input_t structure:
+
+* $0         Maps with monitor_type;
+* $1         Maps with port;
+* $2         Maps with group;
+* $3         Maps with label;
+* $4         Maps with hostname;
+* $5         Maps with family.
+
+Here follows instruction format:
+
+* VM_NOP
+* VM_EXEC string
+* VM_EQ arg arg
+* VM_MAG arg arg
+* VM_MIN arg arg
+* VM_MAEQ arg arg
+* VM_MIEQ arg arg
+* VM_NEQ arg arg
+* VM_JTRUE location
+* VM_JFALSE location
+* VM_JMP location
+* VM_RETURN
+
+Where location is a memory address and code may be a register or a string.
+
+[More documentation]
+
+There is more documentation. Below docs/text there are brief descriptions
+of compiler and optimizer's grammar. Below docs/html there is a detailed
+source code documentation built using doxygen. Such documentation is not
+limited to documenting functions and structures, but also covers design
+choices and implementation issues.
+
+                                   2008-01-28

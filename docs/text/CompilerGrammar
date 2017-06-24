@@ -1,0 +1,65 @@
+                             Compiler Grammar Intro
+
+correct: functions;
+
+  A correct program contains a list of functions. We print the global offset
+  table and the code vector when this rule matches.
+
+functions: | func | functions func;
+
+  A list of functions may be nothing, or a function or a list of functions
+  followed by a function. The latter rule allows an arbitrary number of
+  functions to be present, being left recursive.
+
+func: id param GO body GC
+
+  Another simple rule: a function is an identifier followed by param, an
+  opened curly bracket, a body, and a closed curly bracket. When this rule
+  matches, we install the function in the symbol table.
+
+body: if | exec | body if | body exec | GO body GC | PV
+
+  This rule says that a body may be an if or an exec, or a mixed sequence
+  of ifs and execs (again, being the rule left recursive). There are also
+  two extra rules:
+
+    body: GO body GC
+    body: PV
+
+  The former allows serveral curly brackets to be nested, and, also, is
+  required by if definition. The latter allows a single semicolon to be
+  specified as an empty body (note that a couple of curly brackets also
+  could be used to identify an empty body).
+
+if: IF TO conditions TC body
+if: IF TO conditions TC body ELSE body
+
+  This rule says that an if is actually the keyword IF, an opened bracket,
+  conditions, a closed bracket and then a body. Notice that if could also
+  have an ELSE clause.
+
+conditions: cond | conditions AND cond | conditions OR cond | NOT conditions
+cond: value _CMP_ value | value | TO conditions TC
+
+  NOTE: Please, replace _CMP_ with EQ, MAG, ...
+
+  Here we have the rules for building conditions. There is the usual left
+  recursive rule for aggregating various conditions, and, also, there is
+  the simple rule
+
+    conditions: cond
+
+  for starting. It is interesting to note the rule
+
+    TO conditions TC
+
+  this is fired when a list of conditions is enclosed into brackets, and
+  it allows the content of the brackets to be evaluated as a single cond.
+  Therefore, a line like this is possible (and evaluated in the right
+  order):
+
+    (pippo != 0 && (pluto > 5 || paperino == 19))
+
+
+  Other rules seems not really interesting.
+

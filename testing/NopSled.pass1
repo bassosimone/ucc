@@ -1,0 +1,19 @@
+.got
+	fooobar 0
+	gooobar 3
+	hooobar 6
+	iooobar 9
+
+.code
+	0 VM_NOP
+	1 VM_JMP 2
+	2 VM_RETURN
+	3 VM_NOP
+	4 VM_JMP 5
+	5 VM_RETURN
+	6 VM_NOP
+	7 VM_JMP 8
+	8 VM_RETURN
+	9 VM_NOP
+	10 VM_JMP 11
+	11 VM_RETURN

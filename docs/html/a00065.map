@@ -1,0 +1,32 @@
+<area shape="rect" href="$a00010.html" title="Symbol table entry that references a function." alt="" coords="5,168,133,195">
+<area shape="rect" title="table" alt="" coords="69,192,77,200">
+<area shape="rect" title="table" alt="" coords="140,437,148,445">
+<area shape="rect" title="next" alt="" coords="83,164,91,172">
+<area shape="rect" title="next" alt="" coords="85,192,93,200">
+<area shape="rect" href="$a00012.html" title="Assembly instruction." alt="" coords="168,7,245,33">
+<area shape="rect" title="instr" alt="" coords="183,31,191,39">
+<area shape="rect" title="instr" alt="" coords="75,164,83,172">
+<area shape="rect" href="$a00006.html" title="Parsing tree node." alt="" coords="163,233,229,260">
+<area shape="rect" title="code" alt="" coords="201,31,209,39">
+<area shape="rect" title="code" alt="" coords="192,229,200,237">
+<area shape="rect" href="$a00001.html" title="Entry in backpatch list." alt="" coords="261,103,339,129">
+<area shape="rect" title="instr" alt="" coords="217,31,225,39">
+<area shape="rect" title="instr" alt="" coords="283,99,291,107">
+<area shape="rect" href="$a00007.html" title="Memory allocator and garbage collector." alt="" coords="241,345,327,372">
+<area shape="rect" title="storage" alt="" coords="259,369,267,377">
+<area shape="rect" title="storage" alt="" coords="163,437,171,445">
+<area shape="rect" title="free_nodes" alt="" coords="199,257,207,265">
+<area shape="rect" title="free_nodes" alt="" coords="261,341,269,349">
+<area shape="rect" title="next" alt="" coords="205,229,213,237">
+<area shape="rect" title="next" alt="" coords="207,257,215,265">
+<area shape="rect" title="free_entries" alt="" coords="301,127,309,135">
+<area shape="rect" title="free_entries" alt="" coords="293,341,301,349">
+<area shape="rect" title="truelist\nnextlist\nfalselist" alt="" coords="281,127,289,135">
+<area shape="rect" title="truelist\nnextlist\nfalselist" alt="" coords="203,229,211,237">
+<area shape="rect" title="next" alt="" coords="315,99,323,107">
+<area shape="rect" title="next" alt="" coords="317,127,325,135">
+<area shape="rect" href="$a00008.html" title="Header for allocated block of memory." alt="" coords="432,233,568,260">
+<area shape="rect" title="headers\nfree_headers" alt="" coords="467,257,475,265">
+<area shape="rect" title="headers\nfree_headers" alt="" coords="305,341,313,349">
+<area shape="rect" title="next" alt="" coords="517,229,525,237">
+<area shape="rect" title="next" alt="" coords="520,257,528,265">

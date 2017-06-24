@@ -1,0 +1,10 @@
+.got
+fooobar 0
+gooobar 1
+hooobar 2
+iooobar 3
+.code
+0 VM_RETURN 
+1 VM_RETURN 
+2 VM_RETURN 
+3 VM_RETURN 

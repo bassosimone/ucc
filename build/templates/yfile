@@ -1,0 +1,5 @@
+
+$(TopDir)/src/@DIR@/@NAME@.c: $(TopDir)/src/@DIR@/@NAME@.y
+	@$(ECHO) "  [YACC] @DIR@/@NAME@.y"
+	@$(YACC) $(TopDir)/src/@DIR@/@NAME@.y -o $(TopDir)/src/@DIR@/@NAME@.c
+
